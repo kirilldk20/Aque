@@ -20,31 +20,17 @@ local HttpService = game:GetService("HttpService")
 Library.ShowToggleFrameInKeybinds = true -- Make toggle keybinds work inside the keybinds UI (aka adds a toggle to the UI). Good for mobile users (Default value = true)
 Library.ShowCustomCursor = false -- Toggles the Linoria cursor globaly (Default value = true)
 Library.NotifySide = "Left" -- Changes the side of the notifications globaly (Left, Right) (Default value = Left)
-getgenv().SCRIPT_KEY = nil
+
 local Junkie = loadstring(game:HttpGet("https://jnkie.com/sdk/library.lua"))()
 Junkie.service = "KeySystemService"
 Junkie.identifier = "1000575" 
 Junkie.provider = "KeySystemProvider"
 
 -- UI Implementation
-local validatedKey = nil
+local keyToCheck = nil
 
 -- Show custom UI 
-local function valid()
 
-    local userKey = k  -- Replace with your UI input
-    
-    if userKey then
-        local validation = Junkie.check_key(userKey)
-        if validation.valid then
-			print("valid key")
-			return userKey
-        else
-            warn("Error: " .. (validation.error or "Invalid key"))
-            return nil
-        end
-    end
-end
 
 local Window = Library:CreateWindow({
 
@@ -147,7 +133,7 @@ local InputBox = TabBoxestabs.Tab2:AddInput('InputBox', {
 	-- MaxLength is also an option which is the max length of the text
 
 	Callback = function(Value)
-		k = Value
+		keyToCheck = Value
 		print(k)
 	end,
 })
@@ -155,7 +141,21 @@ local CheckKey = TabBoxestabs.Tab2:AddButton({
 	Text = 'Check Key',
 	Func = function()
 
-	getgenv().SCRIPT_KEY = valid()
+	local result = Junkie.check_key(keyToCheck)
+	if result and result.valid then
+	    if result.message == "KEYLESS" then
+	        getgenv().SCRIPT_KEY = "KEYLESS"
+	    elseif result.message == "KEY_VALID" then
+	        if not savedKey and keyToCheck then
+	            saveVerifiedKey(keyToCheck)
+	        end
+	        getgenv().SCRIPT_KEY = keyToCheck
+	    else
+	        return nil
+	    end
+	else
+	    return nil
+	end
 	end,
 	DoubleClick = false,
 
@@ -165,7 +165,9 @@ local CheckKey = TabBoxestabs.Tab2:AddButton({
 	Disabled = false, -- Will disable the button (true / false)
 	Visible = true, -- Will make the button invisible (true / false)
 })
+
 while not getgenv().SCRIPT_KEY do
     task.wait(0.1)
-	print("ooops")
 end
+
+
