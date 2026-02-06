@@ -164,3 +164,6 @@ local CheckKey = TabBoxestabs.Tab2:AddButton({
 	Disabled = false, -- Will disable the button (true / false)
 	Visible = true, -- Will make the button invisible (true / false)
 })
+while not getgenv().SCRIPT_KEY do
+    task.wait(0.1)
+end
