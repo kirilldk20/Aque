@@ -1,5 +1,4 @@
 print(1)
-getgenv().SCRIPT_KEY = nil
 local repo = 'https://raw.githubusercontent.com/hellotheren/hihitler/refs/heads/main/'
 local k = "null"
 local UIS = game:GetService("UserInputService")
@@ -167,5 +166,3 @@ local CheckKey = TabBoxestabs.Tab2:AddButton({
 while not getgenv().SCRIPT_KEY do
     task.wait(0.1)
 end
-
-
