@@ -170,3 +170,4 @@ local CheckKey = TabBoxestabs.Tab2:AddButton({
 while not getgenv().SCRIPT_KEY do
     task.wait(0.1)
 end
+print("loaded")
