@@ -143,11 +143,15 @@ local CheckKey = TabBoxestabs.Tab2:AddButton({
 
 	local result = Junkie.check_key(keyToCheck)
 	if result and result.valid then
+				print("a")
 	    if result.message == "KEYLESS" then
+					print("aa")
 	        getgenv().SCRIPT_KEY = "KEYLESS"
 	    elseif result.message == "KEY_VALID" then
+					print("aaa")
 	        getgenv().SCRIPT_KEY = keyToCheck
 	    else
+					print("aaaa")
 	        return nil
 	    end
 	else
