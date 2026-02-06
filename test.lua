@@ -134,7 +134,7 @@ local InputBox = TabBoxestabs.Tab2:AddInput('InputBox', {
 
 	Callback = function(Value)
 		keyToCheck = Value
-		print(k)
+		print(keyToCheck)
 	end,
 })
 local CheckKey = TabBoxestabs.Tab2:AddButton({
