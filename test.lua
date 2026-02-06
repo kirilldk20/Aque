@@ -1,6 +1,6 @@
+getgenv().SCRIPT_KEY = nil
 print(1)
 local repo = 'https://raw.githubusercontent.com/hellotheren/hihitler/refs/heads/main/'
-local k = "null"
 local UIS = game:GetService("UserInputService")
 local HttpService = game:GetService("HttpService")
 if UIS.KeyboardEnabled then
