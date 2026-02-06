@@ -22,9 +22,9 @@ Library.ShowCustomCursor = false -- Toggles the Linoria cursor globaly (Default 
 Library.NotifySide = "Left" -- Changes the side of the notifications globaly (Left, Right) (Default value = Left)
 
 local Junkie = loadstring(game:HttpGet("https://jnkie.com/sdk/library.lua"))()
-Junkie.service = "YOUR_SERVICE"
-Junkie.identifier = "12345" 
-Junkie.provider = "Mixed"
+Junkie.service = "KeySystemService"
+Junkie.identifier = "1000575" 
+Junkie.provider = "KeySystemProvider"
 
 -- UI Implementation
 local validatedKey = nil
