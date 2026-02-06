@@ -1,4 +1,4 @@
-
+print(1)
 local repo = 'https://raw.githubusercontent.com/hellotheren/hihitler/refs/heads/main/'
 local k = "null"
 local UIS = game:GetService("UserInputService")
@@ -30,7 +30,7 @@ Junkie.provider = "KeySystemProvider"
 local validatedKey = nil
 
 -- Show custom UI 
-local function showUI()
+local function valid()
 
     local userKey = k  -- Replace with your UI input
     
@@ -45,8 +45,6 @@ local function showUI()
         end
     end
 end
-
-validatedKey = showUI()
 
 local Window = Library:CreateWindow({
 
@@ -155,14 +153,8 @@ local InputBox = TabBoxestabs.Tab2:AddInput('InputBox', {
 local CheckKey = TabBoxestabs.Tab2:AddButton({
 	Text = 'Check Key',
 	Func = function()
-    
-	if not validatedKey then
-    	warn("No valid key provided")
-    	return
-	end
 
-
-	getgenv().SCRIPT_KEY = validatedKey
+	getgenv().SCRIPT_KEY = valid()
 	end,
 	DoubleClick = false,
 
