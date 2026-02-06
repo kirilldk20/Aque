@@ -1,4 +1,5 @@
 print(1)
+getgenv().SCRIPT_KEY = nil
 local repo = 'https://raw.githubusercontent.com/hellotheren/hihitler/refs/heads/main/'
 local k = "null"
 local UIS = game:GetService("UserInputService")
@@ -146,9 +147,6 @@ local CheckKey = TabBoxestabs.Tab2:AddButton({
 	    if result.message == "KEYLESS" then
 	        getgenv().SCRIPT_KEY = "KEYLESS"
 	    elseif result.message == "KEY_VALID" then
-	        if not savedKey and keyToCheck then
-	            saveVerifiedKey(keyToCheck)
-	        end
 	        getgenv().SCRIPT_KEY = keyToCheck
 	    else
 	        return nil
