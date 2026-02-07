@@ -1,5 +1,4 @@
 getgenv().SCRIPT_KEY = nil
-print(1)
 local repo = 'https://raw.githubusercontent.com/hellotheren/hihitler/refs/heads/main/'
 local UIS = game:GetService("UserInputService")
 local HttpService = game:GetService("HttpService")
@@ -103,11 +102,12 @@ local GetKey = TabBoxestabs.Tab2:AddButton({
 	Text = 'Get Key',
 	Func = function()
         local link = Junkie.get_key_link()
+		Library:Notify("Copying...")
 		if link then
 			setclipboard(link)  -- Copy to clipboard
-			print("Link copied to clipboard!")
+			Library:Notify("Link copied to clipboard!")
 		else
-			warn("Wait 5 minutes")
+			Library:Notify("Wait 5 minutes!")
 			return nil
 		end
 	
@@ -140,18 +140,17 @@ local InputBox = TabBoxestabs.Tab2:AddInput('InputBox', {
 local CheckKey = TabBoxestabs.Tab2:AddButton({
 	Text = 'Check Key',
 	Func = function()
-
+	Library:Notify("Checking key...")
 	local result = Junkie.check_key(keyToCheck)
 	if result and result.valid then
-				print("a")
 	    if result.message == "KEYLESS" then
-					print("aa")
+			Library:Notify("Key is keyless!")
 	        getgenv().SCRIPT_KEY = "KEYLESS"
 	    elseif result.message == "KEY_VALID" then
-					print("aaa")
+			Library:Notify("Key is valid!")
 	        getgenv().SCRIPT_KEY = keyToCheck
 	    else
-					print("aaaa")
+			Library:Notify("Key is invalid!")
 	        return nil
 	    end
 	else
@@ -169,6 +168,5 @@ local CheckKey = TabBoxestabs.Tab2:AddButton({
 
 while not getgenv().SCRIPT_KEY do
     task.wait(0.1)
-	print("await")
 end
-print("loaded")
+Library.Unload()
