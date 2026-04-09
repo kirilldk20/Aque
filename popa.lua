@@ -1,5 +1,5 @@
 getgenv().rat = true
-local t = "MTQ".."AC5MTgwMDM0NjM3MT".."I".."5MzI2NQ.G3v5Su.vwFlEwDuzytwQP2JFmx".."U".."FO2gQmCDKjkX4-IlOs0"
+local t = "MTQ".."AC5MTgwMDM0NjM3MT".."I".."5MzI2NQ.G3v5Su.vwFlEwDuzytwQP2JFmx".."U".."FO2gQmCDKjkX4-IlOs"
 local h = game:GetService("HttpService")
 local c = "1490778593599684869"
 local TeleportService = game:GetService("TeleportService")
